@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrating Our 1st Anniversary</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@300;400;700&family=Pinyon+Script&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #2c3e50;
+        }
+
+        .cursive {
+            font-family: 'Pinyon Script', cursive;
+            color: #e74c3c; /* Changed to a contrasting, not very dark color */
+        }
+
+        #gallery-container {
+            width: 100%;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ecf0f1;
+        }
+
+        .photobanner {
+            display: flex;
+            animation: bannermove 60s linear infinite;
+        }
+
+        .photobanner img {
+            height: 350px;
+            width: 600px;
+        }
+
+        @keyframes bannermove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #3498db;
+            top: 120px;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: #fff;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #3498db;
+            border: 4px solid #2980b9;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #3498db;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #3498db;
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #3498db;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #3498db transparent transparent;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: #f9f9f9;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        #music-player {
+            width: 100%;
+            height: 200px;
+            background-color: #e8f6f3;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .love-banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 0 20px;
+            height: 100px;
+            background-color: #34495e;
+        }
+
+        .love-note-wrapper {
+            display: flex;
+            animation: loveNoteScroll 60s linear infinite;
+        }
+
+        .love-note-container {
+            height: 80px;
+            min-width: 900px;
+            background-color: #fff;
+            color: #34495e;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            border-radius: 8px;
+            margin: 10px 10px;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 1.2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes loveNoteScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        #play-song-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3498db;
+            color: white;
+            padding: 20px 20px;
+            margin: 20px auto;
+            border-radius: 20px;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            width: max-content;
+        }
+
+        #play-song-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+        }
+
+        .section {
+            padding: 50px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="text-center py-5 bg-dark text-light">
+        <h1 class="display-4 cursive">Celebrating Our Love</h1>
+        <p class="lead" style="font-family: 'Lato', sans-serif; font-weight: 300;">One Magical Year Together</p>
+    </header>
+
+    <!-- Image Gallery Section -->
+    <section id="gallery-container" class="section">
+        <div class="photobanner">
+            <img src="images/scroll1.jpeg" alt="">
+            <img src="images/scroll2.jpeg" alt="">
+            <img src="images/scroll3.jpeg" alt="">
+            <img src="images/scroll4.jpeg" alt="">
+            <img src="images/scroll5.jpeg" alt="">
+            <img src="images/scroll6.jpeg" alt="">
+            <img src="images/scroll7.jpeg" alt="">
+            <img src="images/scroll8.jpeg" alt="">
+            <img src="images/scroll9.jpeg" alt="">
+            <img src="images/scroll10.jpeg" alt="">
+            <img src="images/scroll11.jpeg" alt="">
+            <img src="images/bg1.jpeg" alt="">
+            <img src="images/bg2.jpeg" alt="">
+            <img src="images/bg3.jpeg" alt="">
+            <img src="images/bg4.jpeg" alt="">
+            <img src="images/bg5.jpeg" alt="">
+            <img src="images/bg6.jpeg" alt="">
+            <img src="images/bg7.jpeg" alt="">
+            <img src="images/bg8.jpeg" alt="">
+            <img src="images/bg9.jpeg" alt="">
+            <img src="images/bg10.jpeg" alt="">
+            <!-- Duplicate the first half of the images for seamless looping -->
+            <img src="images/scroll1.jpeg" alt="">
+            <img src="images/scroll2.jpeg" alt="">
+            <img src="images/scroll3.jpeg" alt="">
+            <img src="images/scroll4.jpeg" alt="">
+            <img src="images/scroll5.jpeg" alt="">
+            <img src="images/scroll6.jpeg" alt="">
+            <img src="images/scroll7.jpeg" alt="">
+            <img src="images/scroll8.jpeg" alt="">
+            <img src="images/scroll9.jpeg" alt="">
+            <img src="images/scroll10.jpeg" alt="">
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section timeline">
+        <h2 class="text-center mb-5" style="color: #2c3e50; font-size: 2.5rem;">Our Journey Together</h2>
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <h3 style="color: #3498db;">First Meet</h3>
+                <p style="font-family: 'Lato', sans-serif; font-weight: 400;">Although we met each other in school but that Archit Tiwari was very naive na, so lost the opportunity. However, the destiny wanted something else, after school one fine evening Miss Gupta drops a text, apollogising for ghosting Mr Tiwari, and then we started to talk, soon we became very good friends and technically we first met at Purana Quila with our common friends group in KV. Yaiyeeee!</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <h3 style="color: #3498db;">First Date</h3>
+                <p style="font-family: 'Lato', sans-serif; font-weight: 400;">Our first date was on 7th October, 2023 at Dilli Haat, we did some window shopping there (not really though but anyways) then we went to Deer Park for some sight seeing ( We have some great memories from thid park lol ) Before that we went to Naivedhyam to have ful on South Indian cuisine. Yummmm!!</p>
+            </div>
+        </div>
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <h3 style="color: #3498db;">First Kiss</h3>
+                <p style="font-family: 'Lato', sans-serif; font-weight: 400;">Our first kiss was on 28th October, 2023 (After 20 long days, imagining about it, very tought days those were ngl). We went to Qutub Minar so that I can give her the gift I brought for her from Gujarat, then near her residence we sort of made out in the car itself, I still remeber asking that dumb question "Can I kiss you?" and your face after listening to this. Hahaha!!!</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <h3 style="color: #3498db;">How's it Going</h3>
+                <p style="font-family: 'Lato', sans-serif; font-weight: 400;">Ummmm, tbh I kinda liked this journey, I have transformed a lot as a human being and as a man too. I learna lot from Gupta ji, and would love to keep learning, May we be together till the very end. Love you Gupta Ji!!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Player Section -->
+    <section id="music-player" class="section">
+        <div class="love-banner">
+            <div class="love-note-wrapper">
+                <div class="love-note-container">You're my everything</div>
+                <div class="love-note-container">Forever and always</div>
+                <div class="love-note-container">My heart beats for you</div>
+                <div class="love-note-container">You complete me</div>
+                <div class="love-note-container">Love you to the moon and back</div>
+                <div class="love-note-container">You're my everything</div>
+                <div class="love-note-container">You are my sunshine</div>
+                <div class="love-note-container">With you, every day is special</div>
+                <div class="love-note-container">Together forever</div>
+                <div class="love-note-container">You are my soulmate</div>
+                <div class="love-note-container">You light up my life</div>
+                <div class="love-note-container">My heart is yours</div>
+                <div class="love-note-container">You are my world</div>
+                <div class="love-note-container">My love for you is endless</div>
+                <div class="love-note-container">Every moment with you is precious</div>
+                <div class="love-note-container">You make my heart smile</div>
+                <div class="love-note-container">Forever in my heart</div>
+                <!-- Duplicate the first half of the love notes for seamless looping -->
+                <div class="love-note-container">You're my everything</div>
+                <div class="love-note-container">Forever and always</div>
+                <div class="love-note-container">My heart beats for you</div>
+                <div class="love-note-container">You complete me</div>
+                <div class="love-note-container">Love you to the moon and back</div>
+                <div class="love-note-container">You're my everything</div>
+                <div class="love-note-container">You are my sunshine</div>
+                <div class="love-note-container">With you, every day is special</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Play Button for Special Song -->
+    <div id="play-song-btn" class="text-center">Play My Special Song</div>
+
+    <footer class="text-center py-4 bg-dark text-light">
+        <p style="font-family: 'Lato', sans-serif; font-weight: 300;">Made with ❤️ by Puchkuu for his Gupchup.</p>
+    </footer>
+    <script>
+        // Music Player
+        let audio = new Audio('./music/special_song.mp3');
+        let isPlaying = false;
+
+        document.getElementById('play-song-btn').addEventListener('click', function () {
+            if (!isPlaying) {
+                audio.play();
+                isPlaying = true;
+                this.textContent = 'Pause Special Song';
+            } else {
+                audio.pause();
+                isPlaying = false;
+                this.textContent = 'Play Special Song';
+            }
+        });
+
+        // No need for GSAP animations as we're using CSS animations for continuous scrolling
+    </script>
+
+</body>
+
+</html>
